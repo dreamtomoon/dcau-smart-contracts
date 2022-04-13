@@ -2,22 +2,24 @@ const { expect, assert } = require("chai");
 const { ethers } = require("hardhat");
 
 describe("DragonEquipmentBulkMint", function () {
-  before(async function () {
-    
-  });
+  before(async function () {});
 
-  beforeEach(async function () {
-    
-  });
+  beforeEach(async function () {});
 
   it("Should be deployed with correct name, symbol and types", async function () {
     this.DragonEquipment = await ethers.getContractFactory("DragonEquipment");
-    this.DragonEquipmentBulkMint = await ethers.getContractFactory("DragonEquipmentBulkMint");
+    this.DragonEquipmentBulkMint = await ethers.getContractFactory(
+      "DragonEquipmentBulkMint"
+    );
     this.signers = await ethers.getSigners();
-    this.dragonEquipment = await this.DragonEquipment.deploy("https://google.com/");
+    this.dragonEquipment = await this.DragonEquipment.deploy(
+      "https://google.com/"
+    );
     this.dragonEquipmentBulkMint = await this.DragonEquipmentBulkMint.deploy();
 
-    await this.dragonEquipment.transferOwnership(this.dragonEquipmentBulkMint.address);
+    await this.dragonEquipment.transferOwnership(
+      this.dragonEquipmentBulkMint.address
+    );
 
     const startId = 0;
     const endId = 16;

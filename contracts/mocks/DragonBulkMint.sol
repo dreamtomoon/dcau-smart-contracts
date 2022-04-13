@@ -26,7 +26,7 @@ contract DragonBulkMint is Ownable, ERC721Holder {
         uint256[] memory rank
     ) public onlyOwner {
         require(
-                attack.length == defense.length &&
+            attack.length == defense.length &&
                 attack.length == speed.length &&
                 attack.length == endurance.length &&
                 endurance.length == crafting.length &&

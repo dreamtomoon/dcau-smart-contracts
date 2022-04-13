@@ -10,7 +10,7 @@ async function main() {
     "DragonBulkMint",
     "0xD3067965605EE3F98D32860c3169FF6246F13826"
   );
-  
+
   const CHUNK_SIZE = 50;
   for (let groupId = 0; groupId < 10; groupId++) {
     const startId = groupId * CHUNK_SIZE;
@@ -23,7 +23,7 @@ async function main() {
     const gatheringArr = [];
     const magicArr = [];
     const rankArr = [];
-  
+
     for (let index = startId; index < endId; index++) {
       const attack = 3;
       const defense = 3;
@@ -42,7 +42,7 @@ async function main() {
       magicArr.push(magic);
       rankArr.push(rank);
     }
-  
+
     console.log("Transaction was sent");
     const tx = await dragonBulkMint.bulkMint(
       dragonCharacter,
@@ -55,11 +55,11 @@ async function main() {
       magicArr,
       rankArr
     );
-  
+
     console.log(`${groupId} Group tx was sent`, tx.hash);
     await tx.wait();
-    console.log('transaction hash', tx.hash);
-  
+    console.log("transaction hash", tx.hash);
+
     console.log("Transaction was mined");
   }
 }

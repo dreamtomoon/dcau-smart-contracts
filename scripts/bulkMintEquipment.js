@@ -6,12 +6,15 @@ require("dotenv").config();
 
 async function main() {
   const dragonEquipmentAddress = "0xD081C1Bb02c5493082edB8416b2D43e7dF771CeF";
-  const dragonEquipmentContract = await ethers.getContractAt("DragonEquipment", "0xD081C1Bb02c5493082edB8416b2D43e7dF771CeF");
+  const dragonEquipmentContract = await ethers.getContractAt(
+    "DragonEquipment",
+    "0xD081C1Bb02c5493082edB8416b2D43e7dF771CeF"
+  );
   const equipmentBulkMint = await ethers.getContractAt(
     "DragonEquipmentBulkMint",
     "0x224614E0201185f1b0203b509843a5CD4507B9d6"
   );
-  
+
   const startId = 0;
   const endId = 16;
   const ownerArr = [];
@@ -43,7 +46,7 @@ async function main() {
   }
 
   const owner = await dragonEquipmentContract.owner();
-  console.log('owner', owner);
+  console.log("owner", owner);
 
   const tx = await equipmentBulkMint.bulkMint(
     dragonEquipmentAddress,
@@ -57,17 +60,15 @@ async function main() {
     luckArr
   );
 
-
   console.log("Transaction was sent");
   // const tx = await equipmentBulkMint.transferCharacterOwnerShip(
   //   dragonEquipmentAddress,
   //   "0x6C641CE6A7216F12d28692f9d8b2BDcdE812eD2b"
   // );
 
-
   console.log(`tx was sent ${tx.hash}`);
   await tx.wait();
-  console.log('transaction hash', tx.hash);
+  console.log("transaction hash", tx.hash);
 
   console.log("Transaction was mined");
 }

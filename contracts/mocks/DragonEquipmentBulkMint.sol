@@ -27,7 +27,7 @@ contract DragonEquipmentBulkMint is Ownable, ERC721Holder {
     ) public onlyOwner {
         uint256 len = _owner.length;
         require(
-                len == _type.length &&
+            len == _type.length &&
                 len == _damage.length &&
                 len == _defense.length &&
                 len == _durability.length &&
@@ -37,7 +37,7 @@ contract DragonEquipmentBulkMint is Ownable, ERC721Holder {
             "Not equal params length"
         );
         uint256 ii;
-        
+
         for (ii = 0; ii < len; ii++) {
             uint256 itemId = IDragonEquipment(_equipment).mintNewEquipment(
                 _owner[ii],
